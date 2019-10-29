@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-
-import CreateCard from './CreateCard';
-import Card from './Card';
+import CardContainer from '../containers/CardContainer';
+import CreateCardContainer from '../containers/CreateCardContainer';
 
 class List extends Component {
-  state = { showOptions: false };
+  state = { showOptions: false} 
 
-  toggleOptions = () => {};
+
+  toggleOptions = () => {   
+    this.setState((prevState) => {
+    return { ...prevState, showOptions: !prevState.showOptions };
+  });};
 
   createCard = () => {};
 
@@ -15,13 +18,13 @@ class List extends Component {
   render() {
     const { list = {} } = this.props;
     const { showOptions } = this.state;
-
+    const cardIds = list.cards;
     return (
       <article className="List">
         <h2>{list.title}</h2>
         {showOptions && (
           <div className="List-options">
-            <CreateCard onCreateCard={this.createCard} />
+            <CreateCardContainer listId={list.id} />
             <button className="List-remove danger" onClick={this.removeList}>
               Remove List
             </button>
@@ -35,7 +38,7 @@ class List extends Component {
         </button>
         <div>
           {/* Iterate over cards here. */}
-          <Card />
+          {cardIds.map(cardId =>  <CardContainer key={cardId} cardId={cardId} />)}
         </div>
       </article>
     );

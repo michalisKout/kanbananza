@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import CreateList from './CreateList';
-import Lists from './Lists';
-
+import Users from './Users';
+import ListContainer from '../containers/ListsContainer';
 // import defaultState from '../default-state.json';
 
 class Application extends Component {
   render() {
     return (
       <main className="Application">
-        <div>{/* Users will go here! */}</div>
+        <div><Users/></div>
         <section>
           <CreateList />
-          <Lists />
+          <ListContainer />
         </section>
       </main>
     );

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MoveCardToList from './MoveCardToList';
 
 class Card extends Component {
   state = { showOptions: false };
@@ -16,6 +17,10 @@ class Card extends Component {
     this.props.onListChange(card, newListId);
   };
 
+  moveCardToList = (event) => {
+
+  }
+
   render() {
     const {
       card = {},
@@ -32,7 +37,7 @@ class Card extends Component {
         <div className="Card-description">{card.description}</div>
         {showOptions && (
           <div className="Card-options">
-            <select
+            {/* <select
               className="Card-move"
               onChange={this.handleChange}
               value={list.id}
@@ -42,7 +47,8 @@ class Card extends Component {
                   {list.title}
                 </option>
               ))}
-            </select>
+            </select> */}
+            <MoveCardToList  listId={list.id} lists={lists} moveCardToList={this.moveCardToList} />
             <button onClick={removeCard} className="Card-remove danger">
               Remove Card
             </button>

@@ -1,0 +1,8 @@
+import { combineReducers } from 'redux';
+import lists from './list-reducer';
+import cards from './cards-reducer';
+
+export default combineReducers({
+    lists,
+    cards
+})
